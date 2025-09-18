@@ -1,0 +1,38 @@
+@model IEnumerable<intitity_framework.Models.Product>
+
+<h1>Products</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var product in Model ?? Enumerable.Empty<intitity_framework.Models.Product>())
+    {
+        <tr>
+            <td>@product.Id</td>
+            <td>@product.Name</td>
+            <td>@product.Price</td>
+        </tr>
+    }
+    </tbody>
+ </table>
+
+<h2>Create Product</h2>
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="First().Name" class="form-label">Name</label>
+        <input name="Name" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="First().Price" class="form-label">Price</label>
+        <input name="Price" type="number" step="0.01" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+
